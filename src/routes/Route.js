@@ -13,8 +13,6 @@ export default function RouteWrapper({
   ...rest
 }) {
   const { signed } = store.getState().auth;
-  console.tron.log('xxxxxxxxxx');
-  console.tron.log(store.getState().auth);
 
   if (!signed && isPrivate) {
     return <Redirect to="/" />;
