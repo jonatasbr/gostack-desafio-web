@@ -1,10 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
+import { format, parseISO } from 'date-fns';
+import pt from 'date-fns/locale/pt';
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
-import { Container, Header, Content, ListMeets, Info } from './styles';
+
+import api from '../../services/api';
+import { Container, Header, Content, Meetup, Info } from './styles';
 
 export default function Dashboard() {
+  const [meetups, setMeetups] = useState([]);
+
+  useEffect(() => {
+    async function loadMeetups() {
+      const response = await api.get('events');
+      const data = response.data.map(meetup => ({
+        ...meetup,
+        dateFormatted: format(
+          parseISO(meetup.date),
+          "dd 'de' MMMM, 'às' HH'h'",
+          {
+            locale: pt,
+          }
+        ),
+      }));
+
+      setMeetups(data);
+    }
+    loadMeetups();
+  }, [meetups]);
+
   return (
     <Container>
       <Header>
@@ -19,49 +43,20 @@ export default function Dashboard() {
       </Header>
       <Content>
         <ul>
-          <ListMeets>
-            <strong>Meetup de React Native</strong>
+          {meetups
+            ? meetups.map((meetup, index) => (
+                <Meetup>
+                  <strong>{meetup.title}</strong>
 
-            <Info>
-              <time>24 de junho, às 20hs</time>
-              <Link to="/profile">
-                <MdChevronRight size={24} color="#fff" />
-              </Link>
-            </Info>
-          </ListMeets>
-
-          <ListMeets>
-            <strong>NodeJs Meetup</strong>
-
-            <Info>
-              <time>30 de junho, às 20hs</time>
-              <Link to="/profile">
-                <MdChevronRight size={24} color="#fff" />
-              </Link>
-            </Info>
-          </ListMeets>
-
-          <ListMeets>
-            <strong>GDG BSB Festival</strong>
-
-            <Info>
-              <time>24 de outubro, às 08hs</time>
-              <Link to="/profile">
-                <MdChevronRight size={24} color="#fff" />
-              </Link>
-            </Info>
-          </ListMeets>
-
-          <ListMeets>
-            <strong>RS/XP Meetup</strong>
-
-            <Info>
-              <time>30 de novembro, às 08hs</time>
-              <Link to="/profile">
-                <MdChevronRight size={24} color="#fff" />
-              </Link>
-            </Info>
-          </ListMeets>
+                  <Info>
+                    <time>{meetup.dateFormatted}</time>
+                    <Link to="/profile">
+                      <MdChevronRight size={24} color="#fff" />
+                    </Link>
+                  </Info>
+                </Meetup>
+              ))
+            : null}
         </ul>
       </Content>
     </Container>

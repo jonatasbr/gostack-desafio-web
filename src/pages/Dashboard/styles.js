@@ -40,7 +40,7 @@ export const Header = styled.div`
   }
 `;
 
-export const ListMeets = styled.li`
+export const Meetup = styled.li`
   border: 0px;
   background: rgba(0, 0, 0, 0.1);
   color: #fff;
