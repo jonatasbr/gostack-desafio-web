@@ -51,7 +51,6 @@ export const Container = styled.div`
         font-size: 14px;
         transition: background 0.2s;
         justify-content: space-between;
-        align-items: center;
 
         &:hover {
           background: ${darken(0.03, '#f64c75')};
