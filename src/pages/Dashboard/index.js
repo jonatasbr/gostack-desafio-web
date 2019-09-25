@@ -5,7 +5,14 @@ import pt from 'date-fns/locale/pt';
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
 
 import api from '../../services/api';
-import { Container, Header, Content, Meetup, Info } from './styles';
+import {
+  Container,
+  Header,
+  ButtonAddMeetup,
+  Content,
+  Meetup,
+  Info,
+} from './styles';
 
 export default function Dashboard() {
   const [meetups, setMeetups] = useState([]);
@@ -35,22 +42,22 @@ export default function Dashboard() {
         <div>
           <h1>Meus meetups</h1>
 
-          <button type="submit">
+          <ButtonAddMeetup to="/meetup">
             <MdAddCircleOutline color="#FFF" size={16} />
             Novo meetup
-          </button>
+          </ButtonAddMeetup>
         </div>
       </Header>
       <Content>
         <ul>
           {meetups
             ? meetups.map((meetup, index) => (
-                <Meetup>
+                <Meetup key={meetup.id}>
                   <strong>{meetup.title}</strong>
 
                   <Info>
                     <time>{meetup.dateFormatted}</time>
-                    <Link to="/profile">
+                    <Link to={`/meetup/${meetup.id}/detail`}>
                       <MdChevronRight size={24} color="#fff" />
                     </Link>
                   </Info>

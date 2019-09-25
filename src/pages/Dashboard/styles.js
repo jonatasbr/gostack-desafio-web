@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { darken } from 'polished';
 
 export const Container = styled.div`
@@ -15,28 +16,29 @@ export const Header = styled.div`
     display: flex;
     justify-content: space-between;
     padding-bottom: 20px;
-    button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      align-self: end;
-      padding-right: 20px;
-      padding-left: 20px;
-      width: 150px;
-      height: 30px;
-      font-weight: bold;
-      color: #fff;
-      border: 0;
-      border-radius: 4px;
-      font-size: 14px;
-      background: #f64c75;
-      transition: background 0.2s;
-      justify-content: space-between;
+  }
+`;
 
-      &:hover {
-        background: ${darken(0.03, '#f64c75')};
-      }
-    }
+export const ButtonAddMeetup = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: end;
+  padding-right: 20px;
+  padding-left: 20px;
+  width: 150px;
+  height: 30px;
+  font-weight: bold;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  font-size: 14px;
+  background: #f64c75;
+  transition: background 0.2s;
+  justify-content: space-between;
+
+  &:hover {
+    background: ${darken(0.03, '#f64c75')};
   }
 `;
 
