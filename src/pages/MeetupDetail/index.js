@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { MdDeleteForever, MdEdit, MdEvent, MdPlace } from 'react-icons/md';
 
 import {
@@ -12,7 +13,9 @@ import {
   Info,
 } from './styles';
 
-export default function MeetupDetail() {
+export default function MeetupDetail({ match }) {
+  console.tron.log(match.params.id);
+
   return (
     <Container>
       <Content>
@@ -58,3 +61,11 @@ export default function MeetupDetail() {
     </Container>
   );
 }
+
+MeetupDetail.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
