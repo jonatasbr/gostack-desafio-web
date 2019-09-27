@@ -9,7 +9,6 @@ import {
   Container,
   Content,
   Header,
-  Buttons,
   ButtonEdit,
   ButtonCancel,
   Description,
@@ -44,7 +43,7 @@ export default function MeetupDetail({ match }) {
         <Header>
           <strong>{meetup.title}</strong>
 
-          <Buttons>
+          <div>
             <ButtonEdit type="button">
               <MdEdit size={16} color="#fff" />
               Editar
@@ -54,7 +53,7 @@ export default function MeetupDetail({ match }) {
               <MdDeleteForever size={16} color="#fff" />
               Cancelar
             </ButtonCancel>
-          </Buttons>
+          </div>
         </Header>
 
         <div className="image">

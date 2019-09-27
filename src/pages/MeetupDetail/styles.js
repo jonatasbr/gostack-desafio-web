@@ -5,7 +5,7 @@ export const Container = styled.div`
   margin: 30px auto;
   border: 0px;
 `;
-export const Buttons = styled.div``;
+
 export const ButtonEdit = styled.button`
   margin: 2px 15px 2px 10px;
   padding: 2px 0px 2px 0px;
