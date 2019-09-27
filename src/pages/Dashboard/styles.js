@@ -3,14 +3,9 @@ import { Link } from 'react-router-dom';
 import { darken } from 'polished';
 
 export const Container = styled.div`
-  max-width: 840px;
-  margin: 40px auto;
+  max-width: 880px;
+  margin: 30px auto;
   border: 0px;
-`;
-
-export const Header = styled.div`
-  width: 100%;
-  flex-direction: column;
   div {
     border: 0px;
     display: flex;
@@ -18,7 +13,6 @@ export const Header = styled.div`
     padding-bottom: 20px;
   }
 `;
-
 export const ButtonAddMeetup = styled(Link)`
   display: flex;
   justify-content: center;
@@ -49,37 +43,46 @@ export const Meetup = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px 10px 30px;
   border-radius: 4px;
   transition: background 0.2s linear;
-  & + li {
-    margin-top: 8px;
-  }
+  max-height: 50px;
+  padding: 10px 5px 10px 15px;
+  margin: 10px 0px 10px 0px;
+
   strong {
     font-size: 15px;
-    line-height: 21px;
   }
   &:hover {
     background: rgba(0, 0, 0, 0.3);
   }
 `;
 export const Content = styled.div`
-  padding-top: 20px;
+  width: 100%;
+  flex-direction: column;
 `;
 
-export const Info = styled.div`
-  display: flex;
+export const Info = styled.span`
+  border: 0px solid green;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
   align-items: center;
-  color: #c0c0c0;
   align-self: end;
+  color: #c0c0c0;
   font-size: 14px;
-  line-height: 20px;
-  time {
-    margin: 0px 25px;
-  }
+  padding-top: 3px;
+  padding-bottom: 8px;
+  align-content: center;
+  display: inline;
   a {
-    border: 0px;
-    padding-left: 10px;
-    margin-left: 0px;
+    display: contents;
+    justify-content: space-between;
+    align-self: center;
+    vertical-align: center;
+    background: none;
+    border: 0px solid red;
+    align-content: center;
+    align-items: center;
+    align-self: center;
   }
 `;

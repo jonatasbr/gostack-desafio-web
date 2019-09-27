@@ -1,10 +1,10 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
-  max-width: 800px;
+  max-width: 880px;
   margin: 30px auto;
+  border: 0px;
 `;
-
 export const Buttons = styled.div``;
 export const ButtonEdit = styled.button`
   margin: 2px 15px 2px 10px;
@@ -34,7 +34,6 @@ export const ButtonCancel = styled.button`
   justify-content: center;
   align-items: center;
 `;
-
 export const Content = styled.div`
   flex-direction: column;
   justify-content: space-between;
@@ -50,7 +49,6 @@ export const Content = styled.div`
     height: 300px;
   }
 `;
-
 export const Header = styled.div`
   font-size: 28px;
   color: #fff;
@@ -60,7 +58,6 @@ export const Header = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
-
 export const Description = styled.div`
   margin: 10px 0px;
   padding: 10px 10px;
@@ -70,12 +67,10 @@ export const Description = styled.div`
   line-height: 24px;
   color: #fff;
 `;
-
 export const Info = styled.div`
   display: flex;
   flex-direction: row;
   vertical-align: center;
-
   time {
     font-size: 13px;
     color: #999;

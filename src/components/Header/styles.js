@@ -3,12 +3,14 @@ import { lighten } from 'polished';
 
 export const Container = styled.div`
   background: #191620;
-  padding: 0 40px;
+  padding: 0 30px;
+  margin-bottom: 40px;
 `;
 
 export const Content = styled.div`
+  border: 0;
   height: 70px;
-  max-width: 900px;
+  max-width: 880px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -16,7 +18,7 @@ export const Content = styled.div`
   a {
     display: flex;
     align-items: center;
-    margin-left: 40px;
+    margin-left: 0px;
     img {
       border: 0px;
       width: 40px;
