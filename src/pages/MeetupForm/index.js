@@ -2,7 +2,10 @@ import React from 'react';
 import { Form, Input } from '@rocketseat/unform';
 
 import { MdAddCircleOutline } from 'react-icons/md';
-import { Container } from './styles';
+
+import ImageInput from './ImageInput';
+import DatePicker from './DatePicker';
+import { Container, Button } from './styles';
 
 export default function MeetupForm() {
   function handleSubmit() {}
@@ -10,16 +13,17 @@ export default function MeetupForm() {
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
+        <ImageInput name="file_id" />
         <Input name="title" placeholder="Título do meetup" />
         <Input name="description" placeholder="Descrição completa" multiline />
-        <Input name="date" placeholder="Data do meetup" />
+        <DatePicker name="date" placeholder="Data do meetup" />
         <Input name="location" placeholder="Localização" />
 
-        <div>
-          <button type="submit">
+        <div className="divActionsButton">
+          <Button type="submit">
             <MdAddCircleOutline color="#FFF" size={16} />
             Salvar meetup
-          </button>
+          </Button>
         </div>
       </Form>
     </Container>
