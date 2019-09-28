@@ -1,8 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import PropTypes from 'prop-types';
 import * as Yup from 'yup';
 import { Form, Input } from '@rocketseat/unform';
 
 import { MdAddCircleOutline } from 'react-icons/md';
+
+import {
+  createMeetupRequest,
+  updateMeetupRequest,
+} from '../../store/modules/meetup/actions';
+
+import history from '../../services/history';
 
 import ImageInput from './ImageInput';
 import DatePicker from './DatePicker';
@@ -17,15 +26,49 @@ const schema = Yup.object().shape({
   location: Yup.string().required(msgRequiredValidation),
 });
 
-export default function MeetupForm() {
-  function handleSubmit() {
-    console.tron.log('teste');
-    console.tron.log(schema);
+export default function MeetupForm({ match }) {
+  console.tron.log('teste 01');
+  console.tron.log(match.params);
+  console.tron.log('teste 02');
+
+  const idMeetup = Number(match.params.id);
+  console.tron.log('teste 03');
+
+  const dispatch = useDispatch();
+
+  console.tron.log('teste 04');
+  const meetup = useSelector(state => state.meetup.meetup);
+  console.tron.log('teste 05');
+  console.tron.log(meetup);
+
+  const initialData = !idMeetup ? [] : meetup;
+  useEffect(() => {
+    if (idMeetup) {
+      if (meetup) {
+        if (idMeetup !== meetup.id) history.push('/');
+      }
+    }
+  }, [idMeetup, meetup]);
+
+  function handleSubmit(data) {
+    if (meetup) {
+      handleUpdateMeetup(data);
+    } else {
+      handleCreateMeetup(data);
+    }
+  }
+
+  function handleCreateMeetup(data) {
+    dispatch(createMeetupRequest(data));
+  }
+
+  function handleUpdateMeetup(data) {
+    dispatch(updateMeetupRequest(meetup.id, data));
   }
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit} schema={schema}>
+      <Form onSubmit={handleSubmit} schema={schema} initialData={initialData}>
         <ImageInput name="file_id" />
         <Input name="title" placeholder="Título do meetup" />
         <Input name="description" placeholder="Descrição completa" multiline />
@@ -42,3 +85,11 @@ export default function MeetupForm() {
     </Container>
   );
 }
+
+MeetupForm.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }).isRequired,
+  }).isRequired,
+};

@@ -6,7 +6,7 @@ export const Container = styled.div`
   border: 0px;
 `;
 
-export const ButtonEdit = styled.button`
+export const ButtonEdit = styled.a`
   margin: 2px 15px 2px 10px;
   padding: 2px 0px 2px 0px;
   color: #fff;
@@ -20,7 +20,7 @@ export const ButtonEdit = styled.button`
   justify-content: center;
   align-items: center;
 `;
-export const ButtonCancel = styled.button`
+export const buttonCancel = styled.a`
   margin: 2px 0px 2px 0px;
   padding: 2px 0px 2px 0px;
   color: #fff;
@@ -57,6 +57,41 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  a.buttonEdit {
+    border: 0px solid red;
+    border-radius: 4px;
+    color: #fff;
+    background: #4dbaf9;
+    margin: 2px 15px 2px 10px;
+    padding: 2px 15px 2px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    span {
+      padding-left: 8px;
+    }
+  }
+
+  a.buttonCancel {
+    border: 0px solid red;
+    border-radius: 4px;
+    color: #fff;
+    background: #d5415c;
+    margin: 2px 15px 2px 10px;
+    padding: 2px 15px 2px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    vertical-align: center;
+    span {
+      padding-left: 8px;
+    }
+  }
 `;
 export const Description = styled.div`
   margin: 10px 0px;
@@ -77,7 +112,7 @@ export const Info = styled.div`
     display: flex;
     align-items: center;
   }
-  local {
+  address {
     margin-left: 30px;
     font-size: 13px;
     color: #999;

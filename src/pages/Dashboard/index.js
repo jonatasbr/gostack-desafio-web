@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
 
+import { requestDetailsMeetup } from '../../store/modules/meetup/actions';
 import api from '../../services/api';
 import { Container, ButtonAddMeetup, Content, Meetup, Info } from './styles';
 
 export default function Dashboard() {
   const [meetups, setMeetups] = useState([]);
+  const dispatch = useDispatch();
+
+  function handleDetail(meetup) {
+    dispatch(requestDetailsMeetup(meetup));
+  }
 
   useEffect(() => {
     async function loadMeetups() {
@@ -34,7 +41,7 @@ export default function Dashboard() {
       <div>
         <h1>Meus meetups</h1>
 
-        <ButtonAddMeetup to="/meetup">
+        <ButtonAddMeetup to="/meetup/new">
           <MdAddCircleOutline color="#FFF" size={16} />
           Novo meetup
         </ButtonAddMeetup>
@@ -48,7 +55,7 @@ export default function Dashboard() {
 
                   <Info>
                     <time>{meetup.dateFormatted}</time>
-                    <Link to={`/meetup/${meetup.id}/detail`}>
+                    <Link onClick={() => handleDetail(meetup)}>
                       <MdChevronRight size={24} color="#fff" />
                     </Link>
                   </Info>

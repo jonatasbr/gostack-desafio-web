@@ -22,7 +22,7 @@ export default function ImageInput() {
         path: 'dataset.file',
       });
     }
-  }, [ref]);
+  }, [ref, registerField]);
 
   async function handleChange(e) {
     const data = new FormData();

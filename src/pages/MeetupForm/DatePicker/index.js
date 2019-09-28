@@ -25,7 +25,7 @@ export default function DatePicker({ name, placeholder }) {
         pickerRef.clear();
       },
     });
-  }, [ref.current, fieldName]);
+  }, [fieldName, registerField]);
 
   return (
     <>
