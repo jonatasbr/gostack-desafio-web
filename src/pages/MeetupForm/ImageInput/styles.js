@@ -2,11 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   label {
-    border: 0px solid green;
+    border: 0px solid red;
     cursor: pointer;
     width: 880px;
     max-width: 880px;
-    height: 250px;
+    height: 230px;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 4px;
     margin-bottom: 10px;

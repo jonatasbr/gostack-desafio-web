@@ -4,7 +4,8 @@ import { darken } from 'polished';
 export const Container = styled.div`
   max-width: 880px;
   margin: 50px auto;
-  @media (max-width: 980px) {
+  border: 0px solid green;
+  @media (max-width: 880px) {
     padding: 0 30px;
   }
   @media (max-width: 360px) {
@@ -19,7 +20,7 @@ export const Container = styled.div`
       background: #1f1b26;
       border: 0;
       border-radius: 4px;
-      height: 50px;
+      height: 40px;
       padding: 0 15px;
       color: #fff;
       margin: 10px 0 0px;
@@ -46,7 +47,7 @@ export const Container = styled.div`
     }
     span {
       font: 16px 'Roboto', sans-serif;
-      color: #ef2c2cc7;
+      color: #fb6f91;
       padding-left: 15px;
       margin: 2px 0 5px;
     }
@@ -125,8 +126,8 @@ export const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 42px;
-  width: 180px;
+  height: 40px;
+  width: 150px;
   margin-top: 15px;
   border: 0;
   border-radius: 4px;
@@ -138,7 +139,7 @@ export const Button = styled.button`
     background: ${darken(0.06, '#f64c75')};
   }
   @media (max-width: 375px) {
-    width: 100%;
+    width: 96%;
     font-size: 16px;
     height: 38px;
   }
