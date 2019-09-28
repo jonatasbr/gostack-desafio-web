@@ -7,7 +7,7 @@ import { MdPhotoCamera } from 'react-icons/md';
 import { Container } from './styles';
 
 export default function ImageInput() {
-  const { defaultValue, registerField } = useField('file');
+  const { defaultValue, registerField } = useField('image');
 
   const [file, setFile] = useState(defaultValue && defaultValue.id);
   const [preview, setPreview] = useState(defaultValue && defaultValue.url);
@@ -39,7 +39,7 @@ export default function ImageInput() {
 
   return (
     <Container>
-      <label htmlFor="file">
+      <label htmlFor="image">
         {preview ? (
           <img src={preview} alt="" />
         ) : (
@@ -51,7 +51,7 @@ export default function ImageInput() {
 
         <input
           type="file"
-          id="file"
+          id="image"
           accept="image/*"
           data-file={file}
           onChange={handleChange}

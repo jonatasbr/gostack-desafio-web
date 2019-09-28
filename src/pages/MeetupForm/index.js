@@ -43,10 +43,8 @@ export default function MeetupForm({ match }) {
 
   const initialData = !idMeetup ? [] : meetup;
   useEffect(() => {
-    if (idMeetup) {
-      if (meetup) {
-        if (idMeetup !== meetup.id) history.push('/');
-      }
+    if (idMeetup && meetup) {
+      if (idMeetup !== meetup.id) history.push('/');
     }
   }, [idMeetup, meetup]);
 

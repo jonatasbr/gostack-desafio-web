@@ -14,6 +14,8 @@ export default function Dashboard() {
   const dispatch = useDispatch();
 
   function handleDetail(meetup) {
+    console.tron.log('dashboard');
+    console.tron.log(meetup);
     dispatch(requestDetailsMeetup(meetup));
   }
 
