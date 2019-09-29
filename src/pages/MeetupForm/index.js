@@ -27,19 +27,11 @@ const schema = Yup.object().shape({
 });
 
 export default function MeetupForm({ match }) {
-  console.tron.log('teste 01');
-  console.tron.log(match.params);
-  console.tron.log('teste 02');
-
   const idMeetup = Number(match.params.id);
-  console.tron.log('teste 03');
 
   const dispatch = useDispatch();
 
-  console.tron.log('teste 04');
   const meetup = useSelector(state => state.meetup.meetup);
-  console.tron.log('teste 05');
-  console.tron.log(meetup);
 
   const initialData = !idMeetup ? [] : meetup;
   useEffect(() => {

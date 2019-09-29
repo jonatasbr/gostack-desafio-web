@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
 import pt from 'date-fns/locale/pt';
@@ -8,9 +9,13 @@ import { MdDeleteForever, MdEdit, MdEvent, MdPlace } from 'react-icons/md';
 import api from '../../services/api';
 import { Container, Content, Header, Description, Info } from './styles';
 
+import { cancelMeetupRequest } from '../../store/modules/meetup/actions';
+
 export default function MeetupDetail({ match }) {
   const { id } = match.params;
   const [meetup, setMeetup] = useState({});
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     async function loadMeetup() {
@@ -30,6 +35,10 @@ export default function MeetupDetail({ match }) {
     loadMeetup();
   }, [id]);
 
+  function handleCancelMeetup(id) {
+    dispatch(cancelMeetupRequest(id));
+  }
+
   return (
     <Container>
       <Content>
@@ -42,7 +51,11 @@ export default function MeetupDetail({ match }) {
               <span>Editar</span>
             </Link>
 
-            <Link className="buttonCancel" to="#">
+            <Link
+              className="buttonCancel"
+              to="#"
+              onClick={() => handleCancelMeetup(meetup.id)}
+            >
               <MdDeleteForever size={16} color="#fff" />
               <span>Cancelar</span>
             </Link>

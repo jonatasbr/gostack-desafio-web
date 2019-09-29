@@ -46,8 +46,20 @@ export function requestDetailsMeetup({ payload }) {
   history.push(`/meetup/details/${payload.meetup.id}`);
 }
 
+export function* cancelMeetup({ payload }) {
+  console.tron.log(payload);
+  const { meetupId } = payload;
+
+  yield call(api.delete, `meetups/${meetupId}`);
+
+  toast.info('MeetUp Cancelado com Sucesso');
+
+  history.push('/');
+}
+
 export default all([
   takeLatest('@meetup/CREATE_MEETUP_REQUEST', createMeetup),
   takeLatest('@meetup/UPDATE_MEETUP_REQUEST', updateMeetup),
   takeLatest('@meetup/REQUEST_DETAILS_MEETUP', requestDetailsMeetup),
+  takeLatest('@meetup/CANCEL_MEETUP', cancelMeetup),
 ]);

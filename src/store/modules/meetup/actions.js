@@ -43,3 +43,10 @@ export function requestDetailsMeetup(meetup) {
     payload: { meetup },
   };
 }
+
+export function cancelMeetupRequest(meetupId) {
+  return {
+    type: '@meetup/CANCEL_MEETUP',
+    payload: { meetupId },
+  };
+}
