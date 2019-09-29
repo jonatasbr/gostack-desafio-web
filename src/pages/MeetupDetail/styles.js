@@ -57,6 +57,11 @@ export const Header = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  span {
+    font-size: 16px;
+    color: #999;
+    font-weight: normal;
+  }
 
   a.buttonEdit {
     border: 0px solid red;
