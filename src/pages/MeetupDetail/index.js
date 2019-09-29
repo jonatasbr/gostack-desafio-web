@@ -12,7 +12,7 @@ import { Container, Content, Header, Description, Info } from './styles';
 import { cancelMeetupRequest } from '../../store/modules/meetup/actions';
 
 export default function MeetupDetail({ match }) {
-  const { id } = match.params;
+  const id = Number(match.params.id);
   const dispatch = useDispatch();
 
   const meetup = useSelector(state => state.meetup.meetup);
@@ -26,7 +26,7 @@ export default function MeetupDetail({ match }) {
   );
 
   useEffect(() => {
-    if (id != meetup.id) {
+    if (id !== meetup.id) {
       history.push('/');
     }
   }, [id, meetup.id]);
@@ -87,7 +87,7 @@ export default function MeetupDetail({ match }) {
 MeetupDetail.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string,
+      id: PropTypes.number,
     }),
   }).isRequired,
 };
