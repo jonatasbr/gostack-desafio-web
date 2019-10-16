@@ -55,7 +55,7 @@ export default function Dashboard() {
 
                   <Info>
                     <time>{meetup.dateFormatted}</time>
-                    <Link onClick={() => handleDetail(meetup)}>
+                    <Link onClick={() => handleDetail(meetup)} to="#">
                       <MdChevronRight size={24} color="#fff" />
                     </Link>
                   </Info>

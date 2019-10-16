@@ -1,17 +1,23 @@
+import {
+  USER_UPDATE_PROFILE_REQUEST,
+  USER_UPDATE_PROFILE_SUCCESS,
+  USER_UPDATE_PROFILE_FAILURE,
+} from '../actionsTypes';
+
 export function updateProfileRequest(data) {
   return {
-    type: '@user/UPDATE_PROFILE_REQUEST',
+    type: USER_UPDATE_PROFILE_REQUEST,
     payload: { data },
   };
 }
 
 export function updateProfileSuccess(profile) {
   return {
-    type: '@user/UPDATE_PROFILE_SUCCESS',
+    type: USER_UPDATE_PROFILE_SUCCESS,
     payload: { profile },
   };
 }
 
 export function updateProfileFailure() {
-  return { type: '@user/UPDATE_PROFILE_FAILURE' };
+  return { type: USER_UPDATE_PROFILE_FAILURE };
 }

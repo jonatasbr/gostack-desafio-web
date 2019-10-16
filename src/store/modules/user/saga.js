@@ -4,6 +4,8 @@ import { toast } from 'react-toastify';
 import api from '../../../services/api';
 import { updateProfileSuccess, updateProfileFailure } from './actions';
 
+import { USER_UPDATE_PROFILE_REQUEST } from '../actionsTypes';
+
 export function* updateProfile({ payload }) {
   try {
     const { name, email, ...rest } = payload.data;
@@ -24,4 +26,4 @@ export function* updateProfile({ payload }) {
   }
 }
 
-export default all([takeLatest('@user/UPDATE_PROFILE_REQUEST', updateProfile)]);
+export default all([takeLatest(USER_UPDATE_PROFILE_REQUEST, updateProfile)]);
