@@ -34,7 +34,7 @@ export default function Dashboard() {
       setMeetups(data);
     }
     loadMeetups();
-  }, [meetups]);
+  }, []);
 
   return (
     <Container>
