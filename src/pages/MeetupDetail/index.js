@@ -19,6 +19,9 @@ export default function MeetupDetail({ match }) {
     state.meetup.meetups.find(meet => String(meet.id) === meetup_id)
   );
 
+  console.tron.log('meetup detail');
+  console.tron.log(meetup);
+
   function handleEditMeetup(id) {
     history.push(`/meetup/edit/${id}`);
   }

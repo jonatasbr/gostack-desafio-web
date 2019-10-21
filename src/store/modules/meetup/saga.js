@@ -25,7 +25,7 @@ export function* listMeetups() {
 
     const data = response.data.map(meetup => ({
       ...meetup,
-      dateFormatted: format(parseISO(meetup.date), "dd 'de' MMMM, 'às' HH'h'", {
+      dateFormated: format(parseISO(meetup.date), "dd 'de' MMMM, 'às' HH'h'", {
         locale: pt,
       }),
     }));
@@ -77,7 +77,7 @@ export function* cancelMeetup({ payload }) {
 
   yield call(api.delete, `meetups/${meetupId}`);
 
-  toast.info('MeetUp Cancelado com Sucesso');
+  toast.info('Meetup cancelado com sucesso');
 
   history.push('/');
 }
