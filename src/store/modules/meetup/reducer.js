@@ -1,12 +1,22 @@
 import produce from 'immer';
 
+import { MEETUP_LIST_MEETUP_SUCCESS, MEETUP_FAILURE } from '../actionsTypes';
+
 const INITIAL_STATE = {
   meetup: null,
+  meetups: [],
 };
 
 export default function meetup(state = INITIAL_STATE, action) {
   return produce(state, draft => {
     switch (action.type) {
+      case MEETUP_LIST_MEETUP_SUCCESS: {
+        draft.meetups = action.payload.meetups;
+        break;
+      }
+      case MEETUP_FAILURE: {
+        break;
+      }
       case '@meetup/CREATE_MEETUP_REQUEST': {
         draft.loading = true;
         break;
