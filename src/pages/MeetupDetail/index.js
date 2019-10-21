@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import PropTypes from 'prop-types';
 import { MdDeleteForever, MdEdit, MdEvent, MdPlace } from 'react-icons/md';
@@ -13,7 +12,6 @@ import {
   Description,
   Info,
   ButtonEdit,
-  buttonCancel,
   ButtonCancel,
 } from './styles';
 
@@ -51,18 +49,12 @@ export default function MeetupDetail({ match }) {
             </span>
           ) : (
             <div>
-              <ButtonEdit
-                className="buttonEdit"
-                to="#"
-                onClick={() => handleEditMeetup(meetup.id)}
-              >
+              <ButtonEdit onClick={() => handleEditMeetup(meetup.id)}>
                 <MdEdit size={16} color="#fff" />
                 <span>Editar</span>
               </ButtonEdit>
 
               <ButtonCancel
-                className="buttonCancel"
-                to="#"
                 onClick={() => {
                   if (
                     window.confirm(
