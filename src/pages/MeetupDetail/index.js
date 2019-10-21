@@ -6,7 +6,16 @@ import PropTypes from 'prop-types';
 import { MdDeleteForever, MdEdit, MdEvent, MdPlace } from 'react-icons/md';
 
 import history from '../../services/history';
-import { Container, Content, Header, Description, Info } from './styles';
+import {
+  Container,
+  Content,
+  Header,
+  Description,
+  Info,
+  ButtonEdit,
+  buttonCancel,
+  ButtonCancel,
+} from './styles';
 
 import { cancelMeetupRequest } from '../../store/modules/meetup/actions';
 
@@ -42,16 +51,16 @@ export default function MeetupDetail({ match }) {
             </span>
           ) : (
             <div>
-              <Link
+              <ButtonEdit
                 className="buttonEdit"
                 to="#"
                 onClick={() => handleEditMeetup(meetup.id)}
               >
                 <MdEdit size={16} color="#fff" />
                 <span>Editar</span>
-              </Link>
+              </ButtonEdit>
 
-              <Link
+              <ButtonCancel
                 className="buttonCancel"
                 to="#"
                 onClick={() => {
@@ -66,7 +75,7 @@ export default function MeetupDetail({ match }) {
               >
                 <MdDeleteForever size={16} color="#fff" />
                 <span>Cancelar</span>
-              </Link>
+              </ButtonCancel>
             </div>
           )}
         </Header>
