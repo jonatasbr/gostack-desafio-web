@@ -13,32 +13,12 @@ export default function Dashboard() {
   const dispatch = useDispatch();
 
   function handleDetail(meetup_id) {
-    history.push(`/details/${meetup_id}`);
+    history.push(`/meetup/details/${meetup_id}`);
   }
 
   useEffect(() => {
-<<<<<<< HEAD
     dispatch(listMeetupsRequest());
   }, [dispatch]);
-=======
-    async function loadMeetups() {
-      const response = await api.get('events');
-      const data = response.data.map(meetup => ({
-        ...meetup,
-        dateFormatted: format(
-          parseISO(meetup.date),
-          "dd 'de' MMMM, 'às' HH'h'",
-          {
-            locale: pt,
-          }
-        ),
-      }));
-
-      setMeetups(data);
-    }
-    loadMeetups();
-  }, []);
->>>>>>> 2f7baef1c93f74326f972a3c4b16b63ae213dc1f
 
   return (
     <Container>

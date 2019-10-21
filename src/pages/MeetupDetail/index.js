@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { format, parseISO } from 'date-fns';
-import pt from 'date-fns/locale/pt';
+
 import PropTypes from 'prop-types';
 import { MdDeleteForever, MdEdit, MdEvent, MdPlace } from 'react-icons/md';
 
@@ -12,24 +11,17 @@ import { Container, Content, Header, Description, Info } from './styles';
 import { cancelMeetupRequest } from '../../store/modules/meetup/actions';
 
 export default function MeetupDetail({ match }) {
-  const id = Number(match.params.id);
+  const { meetup_id } = match.params;
+
   const dispatch = useDispatch();
 
-  const meetup = useSelector(state => state.meetup.meetup);
-
-  const dateFormated = format(
-    parseISO(meetup.date),
-    "dd ' de ' MMMM ', às ' HH:mm'h'",
-    {
-      locale: pt,
-    }
+  const meetup = useSelector(state =>
+    state.meetup.meetups.find(meet => String(meet.id) === meetup_id)
   );
 
-  useEffect(() => {
-    if (id !== meetup.id) {
-      history.push('/');
-    }
-  }, [id, meetup.id]);
+  function handleEditMeetup(id) {
+    history.push(`/meetup/edit/${id}`);
+  }
 
   function handleCancelMeetup(id) {
     dispatch(cancelMeetupRequest(id));
@@ -47,7 +39,11 @@ export default function MeetupDetail({ match }) {
             </span>
           ) : (
             <div>
-              <Link className="buttonEdit" to={`/meetup/edit/${meetup.id}`}>
+              <Link
+                className="buttonEdit"
+                to="#"
+                onClick={() => handleEditMeetup(meetup.id)}
+              >
                 <MdEdit size={16} color="#fff" />
                 <span>Editar</span>
               </Link>
@@ -55,7 +51,15 @@ export default function MeetupDetail({ match }) {
               <Link
                 className="buttonCancel"
                 to="#"
-                onClick={() => handleCancelMeetup(meetup.id)}
+                onClick={() => {
+                  if (
+                    window.confirm(
+                      'Seu meetup será excluído! Deseja mesmo cancelar?'
+                    )
+                  ) {
+                    handleCancelMeetup(meetup.id);
+                  }
+                }}
               >
                 <MdDeleteForever size={16} color="#fff" />
                 <span>Cancelar</span>
@@ -72,7 +76,7 @@ export default function MeetupDetail({ match }) {
         <Info>
           <time>
             <MdEvent size={16} color="#999" style={{ marginRight: 5 }} />
-            {dateFormated}
+            {meetup.dateFormated}
           </time>
           <address>
             <MdPlace size={16} color="#999" style={{ marginRight: 5 }} />
@@ -87,7 +91,7 @@ export default function MeetupDetail({ match }) {
 MeetupDetail.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number,
+      meetup_id: PropTypes.string,
     }),
   }).isRequired,
 };

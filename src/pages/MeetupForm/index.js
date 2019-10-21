@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 import * as Yup from 'yup';
@@ -10,8 +10,6 @@ import {
   createMeetupRequest,
   updateMeetupRequest,
 } from '../../store/modules/meetup/actions';
-
-import history from '../../services/history';
 
 import ImageInput from './ImageInput';
 import DatePicker from './DatePicker';
@@ -27,18 +25,13 @@ const schema = Yup.object().shape({
 });
 
 export default function MeetupForm({ match }) {
-  const idMeetup = Number(match.params.id);
+  const { meetup_id } = match.params;
 
   const dispatch = useDispatch();
 
-  const meetup = useSelector(state => state.meetup.meetup);
-
-  const initialData = !idMeetup ? [] : meetup;
-  useEffect(() => {
-    if (idMeetup && meetup) {
-      if (idMeetup !== meetup.id) history.push('/');
-    }
-  }, [idMeetup, meetup]);
+  const meetup = useSelector(state =>
+    state.meetup.meetups.find(meet => String(meet.id) === meetup_id)
+  );
 
   function handleSubmit(data) {
     if (meetup) {
@@ -58,7 +51,7 @@ export default function MeetupForm({ match }) {
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit} schema={schema} initialData={initialData}>
+      <Form onSubmit={handleSubmit} initialData={meetup} schema={schema}>
         <ImageInput name="file_id" />
         <Input name="title" placeholder="Título do meetup" />
         <Input name="description" placeholder="Descrição completa" multiline />
@@ -79,7 +72,7 @@ export default function MeetupForm({ match }) {
 MeetupForm.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.string,
+      meetup_id: PropTypes.string,
     }).isRequired,
   }).isRequired,
 };

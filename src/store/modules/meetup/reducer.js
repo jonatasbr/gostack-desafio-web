@@ -1,9 +1,15 @@
 import produce from 'immer';
 
-import { MEETUP_LIST_MEETUP_SUCCESS, MEETUP_FAILURE } from '../actionsTypes';
+import {
+  MEETUP_LIST_MEETUP_SUCCESS,
+  MEETUP_FAILURE,
+  MEETUP_CREATE_MEETUP_REQUEST,
+  MEETUP_CREATE_MEETUP_SUCCESS,
+  MEETUP_UPDATE_MEETUP_REQUEST,
+  MEETUP_UPDATE_MEETUP_SUCCESS,
+} from '../actionsTypes';
 
 const INITIAL_STATE = {
-  meetup: null,
   meetups: [],
 };
 
@@ -14,36 +20,24 @@ export default function meetup(state = INITIAL_STATE, action) {
         draft.meetups = action.payload.meetups;
         break;
       }
+      case MEETUP_CREATE_MEETUP_REQUEST: {
+        break;
+      }
+      case MEETUP_CREATE_MEETUP_SUCCESS: {
+        draft.meetups.push(action.payload.meetup);
+        break;
+      }
+      case MEETUP_UPDATE_MEETUP_REQUEST: {
+        break;
+      }
+      case MEETUP_UPDATE_MEETUP_SUCCESS: {
+        const id = draft.meetups.findIndex(
+          meet => meet.id === action.payload.meetup.id
+        );
+        draft.meetups[id] = action.payload.meetup;
+        break;
+      }
       case MEETUP_FAILURE: {
-        break;
-      }
-      case '@meetup/CREATE_MEETUP_REQUEST': {
-        draft.loading = true;
-        break;
-      }
-      case '@meetup/CREATE_MEETUP_SUCCESS': {
-        draft.loading = false;
-        break;
-      }
-      case '@meetup/CREATE_MEETUP_FAILURE': {
-        draft.loading = false;
-        break;
-      }
-      case '@meetup/UPDATE_MEETUP_REQUEST': {
-        draft.loading = true;
-        break;
-      }
-      case '@meetup/UPDATE_MEETUP_SUCCESS': {
-        draft.meetup = action.payload.meetup;
-        draft.loading = false;
-        break;
-      }
-      case '@meetup/UPDATE_MEETUP_FAILURE': {
-        draft.loading = false;
-        break;
-      }
-      case '@meetup/REQUEST_DETAILS_MEETUP': {
-        draft.meetup = action.payload.meetup;
         break;
       }
       default:

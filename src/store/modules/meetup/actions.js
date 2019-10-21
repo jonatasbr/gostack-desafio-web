@@ -1,6 +1,10 @@
 import {
   MEETUP_LIST_MEETUP_REQUEST,
   MEETUP_LIST_MEETUP_SUCCESS,
+  MEETUP_CREATE_MEETUP_REQUEST,
+  MEETUP_UPDATE_MEETUP_REQUEST,
+  MEETUP_UPDATE_MEETUP_SUCCESS,
+  MEETUP_CANCEL_MEETUP,
   MEETUP_FAILURE,
 } from '../actionsTypes';
 
@@ -19,53 +23,28 @@ export function listMeetupsSuccess(meetups) {
 
 export function createMeetupRequest(meetup) {
   return {
-    type: '@meetup/CREATE_MEETUP_REQUEST',
+    type: MEETUP_CREATE_MEETUP_REQUEST,
     payload: { meetup },
-  };
-}
-
-export function createMeetupSuccess() {
-  return {
-    type: '@meetup/CREATE_MEETUP_SUCCESS',
-  };
-}
-
-export function createMeetupFailure() {
-  return {
-    type: '@meetup/CREATE_MEETUP_FAILURE',
   };
 }
 
 export function updateMeetupRequest(id, data) {
   return {
-    type: '@meetup/UPDATE_MEETUP_REQUEST',
+    type: MEETUP_UPDATE_MEETUP_REQUEST,
     payload: { id, data },
   };
 }
 
 export function updateMeetupSuccess(meetup) {
   return {
-    type: '@meetup/UPDATE_MEETUP_SUCCESS',
-    payload: { meetup },
-  };
-}
-
-export function updateMeetupFailure() {
-  return {
-    type: '@meetup/UPDATE_MEETUP_FAILURE',
-  };
-}
-
-export function requestDetailsMeetup(meetup) {
-  return {
-    type: '@meetup/REQUEST_DETAILS_MEETUP',
+    type: MEETUP_UPDATE_MEETUP_SUCCESS,
     payload: { meetup },
   };
 }
 
 export function cancelMeetupRequest(meetupId) {
   return {
-    type: '@meetup/CANCEL_MEETUP',
+    type: MEETUP_CANCEL_MEETUP,
     payload: { meetupId },
   };
 }
