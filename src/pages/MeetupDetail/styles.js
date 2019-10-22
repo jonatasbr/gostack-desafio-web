@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { darken } from 'polished';
 
 export const Container = styled.div`
   max-width: 880px;
@@ -33,40 +34,52 @@ export const Header = styled.div`
     color: #999;
     font-weight: normal;
   }
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 `;
 
 export const ButtonEdit = styled.button`
-  margin: 2px 15px 2px 10px;
-  padding: 2px 0px 2px 0px;
+  border: 0;
   background: #4dbaf9;
-  border: 0px;
   border-radius: 4px;
-  font-size: 14px;
-  font-weight: bold;
-  width: 100px;
   height: 32px;
-  justify-content: center;
+  width: 96px;
+  margin-right: 10px;
+  display: flex;
   align-items: center;
-
+  justify-content: space-around;
+  padding: 0 10px;
+  transition: background 0.2s;
+  &:hover {
+    background: ${darken(0.08, '#4dbaf9')};
+  }
   span {
+    font-size: 14px;
     color: #fff;
+    font-weight: bold;
   }
 `;
 export const ButtonCancel = styled.button`
-  margin: 2px 0px 2px 0px;
-  padding: 2px 0px 2px 0px;
-  background: #d5415c;
-  border: 0px;
+  border: 0;
+  background: #d44059;
   border-radius: 4px;
-  font-size: 14px;
-  font-weight: bold;
-  width: 100px;
   height: 32px;
-  justify-content: center;
+  width: 96px;
+  display: flex;
   align-items: center;
-
+  justify-content: space-around;
+  padding: 0 10px;
+  transition: background 0.2s;
+  &:hover {
+    background: ${darken(0.08, '#d44059')};
+  }
   span {
+    font-size: 14px;
     color: #fff;
+    font-weight: bold;
   }
 `;
 

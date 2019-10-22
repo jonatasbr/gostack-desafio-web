@@ -1,12 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { MdAddCircleOutline, MdChevronRight } from 'react-icons/md';
 
 import history from '../../services/history';
 
 import { listMeetupsRequest } from '../../store/modules/meetup/actions';
-import { Container, ButtonAddMeetup, Content, Meetup, Info } from './styles';
+import { Container, ButtonAddMeetup, Content, Meetup } from './styles';
 
 export default function Dashboard() {
   const meetups = useSelector(state => state.meetup.meetups);
@@ -36,13 +35,16 @@ export default function Dashboard() {
             ? meetups.map(meetup => (
                 <Meetup key={meetup.id}>
                   <strong>{meetup.title}</strong>
-
-                  <Info>
-                    <time>{meetup.dateFormated}</time>
-                    <Link onClick={() => handleDetail(meetup.id)} to="#">
-                      <MdChevronRight size={24} color="#fff" />
-                    </Link>
-                  </Info>
+                  <aside>
+                    <span>{meetup.dateFormated}</span>
+                    <button type="button">
+                      <MdChevronRight
+                        size={24}
+                        color="#fff"
+                        onClick={() => handleDetail(meetup.id)}
+                      />
+                    </button>
+                  </aside>
                 </Meetup>
               ))
             : null}

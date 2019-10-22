@@ -48,41 +48,24 @@ export const Meetup = styled.li`
   max-height: 50px;
   padding: 10px 5px 10px 15px;
   margin: 10px 0px 10px 0px;
-
-  strong {
-    font-size: 15px;
-  }
-  &:hover {
-    background: rgba(0, 0, 0, 0.3);
+  aside {
+    display: flex;
+    align-items: center;
+    span {
+      color: #c0c0c0;
+      font-size: 14px;
+      font-weight: normal;
+      margin: 0 15px;
+    }
+    button {
+      border: 0;
+      background: none;
+      margin-top: 5px;
+      color: #c0c0c0;
+    }
   }
 `;
 export const Content = styled.div`
   width: 100%;
   flex-direction: column;
-`;
-
-export const Info = styled.span`
-  border: 0px solid green;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
-  align-items: center;
-  align-self: end;
-  color: #c0c0c0;
-  font-size: 14px;
-  padding-top: 3px;
-  padding-bottom: 8px;
-  align-content: center;
-  display: inline;
-  a {
-    display: contents;
-    justify-content: space-between;
-    align-self: center;
-    vertical-align: center;
-    background: none;
-    border: 0px solid red;
-    align-content: center;
-    align-items: center;
-    align-self: center;
-  }
 `;
