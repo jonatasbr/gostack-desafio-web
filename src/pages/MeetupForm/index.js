@@ -33,6 +33,8 @@ export default function MeetupForm({ match }) {
     state.meetup.meetups.find(meet => String(meet.id) === meetup_id)
   );
 
+  const loading = useSelector(state => state.meetup.loading);
+
   function handleSubmit(data) {
     if (meetup) {
       handleUpdateMeetup(data);
@@ -60,8 +62,14 @@ export default function MeetupForm({ match }) {
 
         <div className="divActionsButton">
           <Button type="submit">
-            <MdAddCircleOutline color="#FFF" size={16} />
-            Salvar meetup
+            {loading ? (
+              'Carregando...'
+            ) : (
+              <>
+                <MdAddCircleOutline color="#FFF" size={16} />
+                Salvar meetup
+              </>
+            )}
           </Button>
         </div>
       </Form>
